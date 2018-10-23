@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 100%;
+       }
+       html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  var athens = {lat: 33.9498, lng: -83.4096};
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 13.5, center: athens});
+  var marker = new google.maps.Marker({
+      position: athens,
+      map: map,
+      icon: 'resources/circle.png'
+    });
+    marker.addListener('click', function() {
+    map.setZoom(16);
+    map.setCenter(marker.getPosition());
+  });
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAAQVRNe_MBdfzgc5XLVO0NAb1hr1j_OA&callback=initMap">
+    </script>
+  </body>
+</html>
